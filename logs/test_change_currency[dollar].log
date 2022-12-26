@@ -1,0 +1,6 @@
+MainPage - INFO - Clicking element: button[class='btn btn-link dropdown-toggle']
+MainPage - INFO - Find element button[class='btn btn-link dropdown-toggle']
+MainPage - INFO - Clicking element: button[name='USD']
+MainPage - INFO - Find element button[name='USD']
+MainPage - INFO - Find element .btn.btn-inverse.btn-block.btn-lg.dropdown-toggle > span
+MainPage - INFO - Find element //p[contains(text(),'$602.00')]

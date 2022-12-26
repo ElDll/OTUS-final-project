@@ -1,0 +1,27 @@
+MainPage - INFO - Clicking element: .fa.fa-user
+MainPage - INFO - Find element .fa.fa-user
+MainPage - INFO - Clicking element: //a[normalize-space()='Register']
+MainPage - INFO - Find element //a[normalize-space()='Register']
+RegisterPage - INFO - Input Alexey in input #input-firstname
+RegisterPage - INFO - Find element #input-firstname
+RegisterPage - INFO - Input Kolchanov in input #input-lastname
+RegisterPage - INFO - Find element #input-lastname
+RegisterPage - INFO - Input 123456789@mail.ru in input #input-email
+RegisterPage - INFO - Find element #input-email
+RegisterPage - INFO - Input 88005553535 in input #input-telephone
+RegisterPage - INFO - Find element #input-telephone
+RegisterPage - INFO - Input qwerty in input #input-password
+RegisterPage - INFO - Find element #input-password
+RegisterPage - INFO - Input qwerty in input #input-confirm
+RegisterPage - INFO - Find element #input-confirm
+RegisterPage - INFO - Clicking element: input[value='1'][name='agree']
+RegisterPage - INFO - Find element input[value='1'][name='agree']
+RegisterPage - INFO - Clicking element: input[value="Continue"]
+RegisterPage - INFO - Find element input[value="Continue"]
+RegisterPage - INFO - Find element div[id='content'] h1
+MainPage - INFO - Clicking element: button[class='btn btn-link dropdown-toggle']
+MainPage - INFO - Find element button[class='btn btn-link dropdown-toggle']
+MainPage - INFO - Clicking element: button[name='GBP']
+MainPage - INFO - Find element button[name='GBP']
+MainPage - INFO - Find element .btn.btn-inverse.btn-block.btn-lg.dropdown-toggle > span
+MainPage - INFO - Find element //p[contains(text(),'£368.73')]
