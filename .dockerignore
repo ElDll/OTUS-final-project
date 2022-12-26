@@ -1,0 +1,13 @@
+# Ignore virtual environment
+.venv/
+venv/
+
+# Ignore IDE dir
+.idea/
+
+# Ignore git and cache dirs
+.git
+
+#Igonre allure-report dir
+/allure-report/
+/allure-results/
