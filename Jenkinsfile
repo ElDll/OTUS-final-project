@@ -21,7 +21,8 @@ pipeline {
               script {
           	     docker.image('tests').inside("--network my_network") {
                     	bat "--executor %executor%"
-        	     }
+                 }
+        	  }
       	    }
          }
      }
