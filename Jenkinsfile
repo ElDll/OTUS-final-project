@@ -19,7 +19,7 @@ pipeline {
         steps {
            catchError {
               script {
-          	     docker.run("--name tests_run --network my_network tests --executor %executor%")
+          	     docker.run("--name tests_run", "--network my_network", "tests", "--executor %executor%")
         	     }
       	    }
          }
