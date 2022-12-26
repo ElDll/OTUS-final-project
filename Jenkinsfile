@@ -20,9 +20,8 @@ pipeline {
            catchError {
               script {
           	     bat "docker run --name tests_run --network my_network tests --executor %executor% --browser %browser% --url %opencart_address% -n %threads% --bv %bv%"
-                 }
         	  }
-      	    }
+      	   }
          }
      }
 
