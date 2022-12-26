@@ -25,6 +25,16 @@ pipeline {
          }
      }
 
+     stage('Copy allure-results') {
+     steps {
+           catchError {
+              script {
+          	     bat "docker cp tests_run:/app/allure-results ."
+        	  }
+      	   }
+         }
+     }
+
      stage("Delete container") {
         steps {
     	catchError {
