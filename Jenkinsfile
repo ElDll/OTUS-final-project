@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-    stringParam(defaultValue: '192.168.1.76', description: 'executor', name: 'executor')
+    string(defaultValue: '192.168.1.76', description: 'executor', name: 'executor')
   }
 
   stages {
