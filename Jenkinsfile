@@ -19,7 +19,8 @@ pipeline {
         steps {
            catchError {
               script {
-          	     docker.run("--name tests_run", "--network my_network", "tests", "--executor %executor%")
+          	     docker.image('tests').inside("--network my_network") {
+                    	bat "--executor %executor%"
         	     }
       	    }
          }
@@ -29,7 +30,7 @@ pipeline {
         steps {
     	catchError {
       	   script {
-        	      docker.build("-t tests .")
+        	      docker.rm("tests_run")
       	     }
           }
        }
