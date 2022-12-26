@@ -1,11 +1,15 @@
 pipeline {
   agent any
+  parameters {
+    stringParam(defaultValue: '192.168.1.76', description: 'executor', name: 'executor')
+  }
+
   stages {
      stage("Build image") {
         steps {
     	catchError {
       	   script {
-        	      docker.build("-t tests .")
+        	      docker.build("tests", "-f Dockerfile .")
       	     }
           }
        }
@@ -15,7 +19,7 @@ pipeline {
         steps {
            catchError {
               script {
-          	     docker.run("--name tests_run --network my_network tests --executor %executor% --browser %browser% --url %opencart_address% -n %threads% --bv %bv%")
+          	     docker.run("--name tests_run --network my_network tests --executor %executor%")
         	     }
       	    }
          }
