@@ -31,8 +31,8 @@ pipeline {
               script {
                      bat "cm_windows_amd64.exe selenoid start --port 4444"
                      bat "cm_windows_amd64.exe selenoid-ui start --port 8080"
-                     bat "docker network connect my_network selenoid"
-                     bat "docker network connect my_network selenoid-ui"
+                     bat "docker network connect pipe_test_my_network selenoid"
+                     bat "docker network connect pipe_test_my_network selenoid-ui"
         	  }
       	   }
         }
@@ -42,7 +42,7 @@ pipeline {
         steps {
            catchError {
               script {
-                     bat "docker run --name tests_run --network my_network tests --executor %executor%"
+                     bat "docker run --name tests_run --network pipe_test_my_network tests --executor %executor%"
         	  }
       	   }
          }
@@ -69,15 +69,15 @@ pipeline {
          }
      }
 
-     stage('Delete network') {
-     steps {
-           catchError {
-              script {
-          	    bat "docker network rm my_network"
-        	  }
-      	   }
-         }
-     }
+     stage("Stop opencart") {
+        steps {
+    	catchError {
+      	   script {
+        	      bat "docker-compose down"
+      	     }
+          }
+       }
+    }
 
      stage("Delete container") {
         steps {
