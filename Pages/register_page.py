@@ -4,7 +4,7 @@ import allure
 from selenium.common import TimeoutException
 from .common_methods import CommonMethods
 from .locators import RegisterPageLocators
-from data.register_page_data import first_name, last_name, email, telephone, password
+from ..data.register_page_data import first_name, last_name, email, telephone, password
 
 
 class RegisterPage(CommonMethods):

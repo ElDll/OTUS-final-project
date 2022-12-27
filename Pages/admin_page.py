@@ -5,8 +5,8 @@ import allure
 from selenium.common import TimeoutException
 from .common_methods import CommonMethods
 from .locators import AdminAuthPageLocators, AdminMainPageLocators, AdminProductPageLocators, AddFormLocators
-from data.admin_credentials import login, password
-from data.product_add_data import product_name, meta_tag_title, model
+from ..data.admin_credentials import login, password
+from ..data.product_add_data import product_name, meta_tag_title, model
 
 
 class AdminPage(CommonMethods):

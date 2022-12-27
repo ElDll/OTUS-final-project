@@ -3,8 +3,8 @@ import sys
 import allure
 from selenium.common import TimeoutException
 
-from Pages.common_methods import CommonMethods
-from Pages.locators import CatalogPageLocators
+from .common_methods import CommonMethods
+from .locators import CatalogPageLocators
 
 
 class CatalogPage(CommonMethods):
