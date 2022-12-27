@@ -47,7 +47,7 @@ pipeline {
         steps {
            catchError {
               script {
-                     bat "docker run --name tests_run --network pipe_test_my_network tests --executor %executor%"
+                     bat "docker run --name tests_run --network pipe_test_my_network tests %mark% --executor %executor% --url %url% -n %threads% --browser %browser% --bv %bv%"
         	  }
       	   }
          }
