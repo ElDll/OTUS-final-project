@@ -1,7 +1,12 @@
 pipeline {
   agent any
   parameters {
+    string(defaultValue: '-m "not need_admin_url"', description: 'mark', name: 'mark')
     string(defaultValue: '192.168.1.76', description: 'executor', name: 'executor')
+    string(defaultValue: 'http://192.168.1.76:8081', description: 'url', name: 'url')
+    string(defaultValue: '1', description: 'threads', name: 'threads')
+    string(defaultValue: 'chrome', description: 'browser', name: 'browser')
+    string(defaultValue: '104', description: 'bv', name: 'bv')
   }
 
   stages {
