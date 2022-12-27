@@ -15,15 +15,15 @@ pipeline {
        }
     }
 
-//     stage('Create network') {
-//         steps {
-//            catchError {
-//               script {
-//                      bat "docker network create my_network"
-//         	  }
-//       	   }
-//         }
-//      }
+    stage('Run opencart') {
+        steps {
+           catchError {
+              script {
+                     bat "docker-compose ud -d"
+        	  }
+      	   }
+        }
+     }
 
      stage('Configure selenoid') {
         steps {
@@ -42,7 +42,6 @@ pipeline {
         steps {
            catchError {
               script {
-                     bat "docker"
                      bat "docker run --name tests_run --network my_network tests --executor %executor%"
         	  }
       	   }
