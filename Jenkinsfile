@@ -15,15 +15,35 @@ pipeline {
        }
     }
 
+    stage('Create network') {
+        steps {
+           catchError {
+              script {
+                     bat "docker network create my_network"
+        	  }
+      	   }
+        }
+     }
+
+     stage('Configure selenoid') {
+        steps {
+           catchError {
+              script {
+                     bat "cm_windows_amd64.exe selenoid start --port 4444"
+                     bat "cm_windows_amd64.exe selenoid-ui start --port 8080"
+                     bat "docker network connect my_network selenoid"
+                     bat "docker network connect my_network selenoid-ui"
+        	  }
+      	   }
+        }
+     }
+
      stage('Run tests') {
         steps {
            catchError {
               script {
-                 docker.image('aerokube/selenoid:1.10.8').withRun('-p 4444:4444') { c ->
-                     docker.image('aerokube/selenoid-ui:dev-latest').inside('-p 8080:8080') {
+                     bat "docker"
                      bat "docker run --name tests_run --network my_network tests --executor %executor%"
-                     }
-                 }
         	  }
       	   }
          }
@@ -34,6 +54,27 @@ pipeline {
            catchError {
               script {
           	     bat "docker cp tests_run:/app/allure-results ."
+        	  }
+      	   }
+         }
+     }
+
+     stage('Stop selenoid') {
+     steps {
+           catchError {
+              script {
+          	     bat "cm_windows_amd64.exe selenoid stop"
+          	     bat "cm_windows_amd64.exe selenoid-ui stop"
+        	  }
+      	   }
+         }
+     }
+
+     stage('Delete network') {
+     steps {
+           catchError {
+              script {
+          	    bat "docker network rm my_network"
         	  }
       	   }
          }
