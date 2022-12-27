@@ -14,6 +14,8 @@ class MainPageLocators:
     SELECT_POUND = (By.CSS_SELECTOR, "button[name='GBP']")
     BASKET_BUTTON_TEXT = (By.CSS_SELECTOR, ".btn.btn-inverse.btn-block.btn-lg.dropdown-toggle > span")
     PRODUCT_PRICE = (By.XPATH, "//p[contains(text(),'{}')]")
+    DESKTOPS_BTN = (By.XPATH, "//a[normalize-space()='Desktops']")
+    DESKTOPS_MAC_BTN = (By.XPATH, "//a[normalize-space()='Mac (1)']")
 
 
 class CatalogPageLocators:
@@ -24,6 +26,7 @@ class CatalogPageLocators:
     LIKE_BTN_CARD = (
         By.CSS_SELECTOR, 'button[type="button"][data-toggle="tooltip"][data-original-title="Add to Wish List"]')
     SORT_BTN = (By.CSS_SELECTOR, '#input-sort')
+    IMAC_BTN = (By.XPATH, "//img[@title='iMac']")
 
 
 class ProductPageLocators:

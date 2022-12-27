@@ -12,6 +12,18 @@ class MainPage(CommonMethods):
     def __init__(self, driver):
         super().__init__(driver)
 
+    @allure.step("Переход на страницу каталога")
+    def go_to_catalog_page(self):
+        try:
+            self.click_element(*MainPageLocators.DESKTOPS_BTN)
+            self.click_element(*MainPageLocators.DESKTOPS_MAC_BTN)
+        except TimeoutException:
+            allure.attach(
+                body=self.driver.get_screenshot_as_png(),
+                name="screenshot_image",
+                attachment_type=allure.attachment_type.PNG)
+            raise sys.exit('Метод go_to_catalog_page завершился ошибкой')
+
     @allure.step("Переход на страницу регистрации")
     def go_to_register_page(self):
         try:

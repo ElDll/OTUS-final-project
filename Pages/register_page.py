@@ -4,7 +4,7 @@ import allure
 from selenium.common import TimeoutException
 from .common_methods import CommonMethods
 from .locators import RegisterPageLocators
-from ..data.register_page_data import first_name, last_name, email, telephone, password
+from data.register_page_data import first_name, last_name, email, telephone, password
 
 
 class RegisterPage(CommonMethods):
@@ -30,7 +30,6 @@ class RegisterPage(CommonMethods):
                 name="screenshot_image",
                 attachment_type=allure.attachment_type.PNG)
             raise sys.exit('Метод register_user завершился ошибкой')
-
 
     @allure.step("Проверка пояления сообщения об успешной регистрации")
     def check_created_header(self):

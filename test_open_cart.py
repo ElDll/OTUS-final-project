@@ -1,15 +1,16 @@
 import pytest
 import allure
 
-from .Pages.locators import MainPageLocators
-from .Pages.locators import CatalogPageLocators
-from .Pages.locators import ProductPageLocators
-from .Pages.locators import AdminAuthPageLocators
-from .Pages.locators import RegisterPageLocators
-from .Pages.admin_page import AdminPage
-from .Pages.main_page import MainPage
-from .Pages.register_page import RegisterPage
-from .Pages.common_methods import CommonMethods
+from Pages.catalog_page import CatalogPage
+from Pages.locators import MainPageLocators
+from Pages.locators import CatalogPageLocators
+from Pages.locators import ProductPageLocators
+from Pages.locators import AdminAuthPageLocators
+from Pages.locators import RegisterPageLocators
+from Pages.admin_page import AdminPage
+from Pages.main_page import MainPage
+from Pages.register_page import RegisterPage
+from Pages.common_methods import CommonMethods
 
 
 @allure.title('Поиск элементов на main page')
@@ -36,8 +37,9 @@ def test_main_page(driver, locator):
                           CatalogPageLocators.SORT_BTN]
                          )
 def test_catalog_page(driver, locator):
-    catalog_page = CommonMethods(driver)
-    assert catalog_page.check_element(*locator), f'Element not found {locator[1]}'
+    page = MainPage(driver)
+    page.go_to_catalog_page()
+    assert page.check_element(*locator), f'Element not found {locator[1]}'
 
 
 @allure.title('Поиск элементов на product page')
@@ -49,9 +51,12 @@ def test_catalog_page(driver, locator):
                           ProductPageLocators.PRODUCT_NAME,
                           ProductPageLocators.LIKE_PRODUCT_BTN]
                          )
-def test_catalog_page(driver, locator):
-    product_page = CommonMethods(driver)
-    assert product_page.check_element(*locator), f'Element not found {locator[1]}'
+def test_product_page(driver, locator):
+    page = MainPage(driver)
+    page.go_to_catalog_page()
+    page = CatalogPage(driver)
+    page.go_to_product_page()
+    assert page.check_element(*locator), f'Element not found {locator[1]}'
 
 
 @allure.title('Поиск элементов на admin page')
@@ -63,9 +68,9 @@ def test_catalog_page(driver, locator):
                           AdminAuthPageLocators.FORGOTTEN_BTN,
                           AdminAuthPageLocators.LOGIN_BTN]
                          )
-def test_catalog_page(driver, locator):
-    admin_page = CommonMethods(driver)
-    assert admin_page.check_element(*locator), f'Element not found {locator[1]}'
+def test_admin_page(driver, locator):
+    page = AdminPage(driver)
+    assert page.check_element(*locator), f'Element not found {locator[1]}'
 
 
 @allure.title('Поиск элементов на register page')
@@ -77,9 +82,10 @@ def test_catalog_page(driver, locator):
                           RegisterPageLocators.TELEPHONE_FIELD,
                           RegisterPageLocators.CONTINUE_BTN]
                          )
-def test_catalog_page(driver, locator):
-    register_page = CommonMethods(driver)
-    assert register_page.check_element(*locator), f'Element not found {locator[1]}'
+def test_register_page(driver, locator):
+    page = MainPage(driver)
+    page.go_to_register_page()
+    assert page.check_element(*locator), f'Element not found {locator[1]}'
 
 
 @allure.title('Добавление продуктов в админ панели')
