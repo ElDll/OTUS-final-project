@@ -15,15 +15,15 @@ pipeline {
        }
     }
 
-    stage('Create network') {
-        steps {
-           catchError {
-              script {
-                     bat "docker network create my_network"
-        	  }
-      	   }
-        }
-     }
+//     stage('Create network') {
+//         steps {
+//            catchError {
+//               script {
+//                      bat "docker network create my_network"
+//         	  }
+//       	   }
+//         }
+//      }
 
      stage('Configure selenoid') {
         steps {
