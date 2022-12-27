@@ -19,6 +19,8 @@ pipeline {
         steps {
            catchError {
               script {
+                 docker.image('aerokube/selenoid:1.10.8').withRun('-p 4444:4444')
+                 docker.image('aerokube/selenoid-ui:dev-latest').withRun('-p 8080:8080')
           	     bat "docker run --name tests_run --network my_network tests --executor %executor%"
         	  }
       	   }
