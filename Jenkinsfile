@@ -19,7 +19,7 @@ pipeline {
         steps {
            catchError {
               script {
-                     bat "docker-compose ud -d"
+                     bat "docker-compose up-d"
         	  }
       	   }
         }
