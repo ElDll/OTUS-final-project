@@ -1,16 +1,16 @@
 import pytest
 import allure
 
-from Pages.catalog_page import CatalogPage
-from Pages.locators import MainPageLocators
-from Pages.locators import CatalogPageLocators
-from Pages.locators import ProductPageLocators
-from Pages.locators import AdminAuthPageLocators
-from Pages.locators import RegisterPageLocators
-from Pages.admin_page import AdminPage
-from Pages.main_page import MainPage
-from Pages.register_page import RegisterPage
-from Pages.common_methods import CommonMethods
+from .Pages.catalog_page import CatalogPage
+from .Pages.locators import MainPageLocators
+from .Pages.locators import CatalogPageLocators
+from .Pages.locators import ProductPageLocators
+from .Pages.locators import AdminAuthPageLocators
+from .Pages.locators import RegisterPageLocators
+from .Pages.admin_page import AdminPage
+from .Pages.main_page import MainPage
+from .Pages.register_page import RegisterPage
+from .Pages.common_methods import CommonMethods
 
 
 @allure.title('Поиск элементов на main page')
@@ -61,6 +61,7 @@ def test_product_page(driver, locator):
 
 @allure.title('Поиск элементов на admin page')
 @pytest.mark.admin_page
+@pytest.mark.need_admin_url
 @pytest.mark.parametrize('locator',
                          [AdminAuthPageLocators.ADMIN_TITLE,
                           AdminAuthPageLocators.USER_FIELD,
@@ -90,6 +91,7 @@ def test_register_page(driver, locator):
 
 @allure.title('Добавление продуктов в админ панели')
 @pytest.mark.add_product
+@pytest.mark.admin_page
 def test_add_product(driver):
     admin_page = AdminPage(driver)
     admin_page.login()
@@ -100,6 +102,7 @@ def test_add_product(driver):
 
 @allure.title('Удаление продуктов в админ панели')
 @pytest.mark.delete_product
+@pytest.mark.admin_page
 def test_delete_product(driver):
     admin_page = AdminPage(driver)
     admin_page.login()
